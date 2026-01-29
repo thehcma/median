@@ -44,6 +44,13 @@ When creating or updating a pull request:
 - Validate input and raise informative exceptions
 - Use type hints for all public APIs
 
+**Error Message Guidelines**:
+- Error messages must provide context, not just indicate failure
+- Include both what was received and what was expected
+- Format: "Expected <type/constraint>, got <actual_value>" or similar
+- Example: ✅ "Expected a sequence, got int" ❌ "Invalid input type"
+- Example: ✅ "All values must be numeric (int or float), got str" ❌ "must be numeric"
+
 ## Agent 2: Critique Agent (Claude)
 
 **Model**: `claude-sonnet-4.5` (see AGENT_MODELS.md)
@@ -78,10 +85,11 @@ When creating or updating a pull request:
 - [ ] Type hints complete and accurate
 - [ ] Docstrings clear and comprehensive
 - [ ] No security vulnerabilities
-- [ ] Error messages are informative
+- [ ] Error messages are informative (include both expected and actual values)
 - [ ] Naming conventions followed (values, descriptive mappings)
 - [ ] No dead code (unused methods, variables, imports, or parameters)
 - [ ] **VS Code Problems panel is clear** (no import errors, type errors, or linting issues)
+- [ ] **Tests run without warnings** (pytest should produce no warnings)
 
 ## Agent 2b: Secondary Critique Agent (GPT-5)
 
@@ -105,7 +113,9 @@ When creating or updating a pull request:
 - Code maintainability over time
 - Edge cases from a different angle
 - Look for dead code (unused methods, setup fixtures that never run, unreachable code)
+- Error message quality: ensure exceptions provide context with expected vs actual values
 - **Verify VS Code Problems panel is clear** (use `get_errors()` tool)
+- **Verify tests run without warnings** (check pytest output for PytestWarnings)
 
 **When to Use**:
 - After primary critic review
@@ -192,3 +202,4 @@ class TestImplementation:
 - [ ] Performance benchmarks meet requirements
 - [ ] No hardcoded expected values (use reference instead)
 - [ ] **VS Code Problems panel is clear** (no errors in test files)
+- [ ] **Tests run without warnings** (no PytestWarnings or configuration issues)
