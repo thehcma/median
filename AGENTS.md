@@ -16,6 +16,14 @@ This document defines the four specialized agents for the percentile calculator 
 
 **Only after all review agents have completed their analysis and approved the changes** should a pull request be created. This ensures code quality, correctness, and adherence to project standards before submission.
 
+### Pull Request Requirements
+
+When creating or updating a pull request:
+- **PR title must accurately reflect all changes** in the PR
+- **PR description must document all changes**, not just the initial ones
+- If additional commits are added to a PR branch, review and update the PR title/description to encompass all changes
+- Ensure the PR description includes comprehensive review completion status for all changes
+
 ## Agent 1: Implementation Agent
 
 **Model**: `claude-sonnet-4.5` (see AGENT_MODELS.md)
