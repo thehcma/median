@@ -13,6 +13,9 @@ import pytest
 
 from median.percentile_calculator import PercentileCalculator
 
+# Tolerance for floating-point comparisons
+TOLERANCE = 0.0001
+
 
 def reference_percentile_calculator(values: list[float]) -> tuple[float, float, float]:
     """
@@ -71,9 +74,9 @@ class TestPercentileCalculator:
             p25, p50, p75 = self.calc.calculate(values)
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(values)
             
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_five_elements(self):
             """Test with 5 elements."""
@@ -81,9 +84,9 @@ class TestPercentileCalculator:
             p25, p50, p75 = self.calc.calculate(values)
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(values)
             
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_two_elements(self):
             """Test with only 2 elements."""
@@ -91,9 +94,9 @@ class TestPercentileCalculator:
             p25, p50, p75 = self.calc.calculate(values)
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(values)
             
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_single_element(self):
             """Test with a single element."""
@@ -110,9 +113,9 @@ class TestPercentileCalculator:
             p25, p50, p75 = self.calc.calculate(values)
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(values)
             
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_large_dataset(self):
             """Test with a larger dataset (100 elements)."""
@@ -120,9 +123,9 @@ class TestPercentileCalculator:
             p25, p50, p75 = self.calc.calculate(values)
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(values)
             
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_floating_point_values(self):
             """Test with floating point values."""
@@ -130,9 +133,9 @@ class TestPercentileCalculator:
             p25, p50, p75 = self.calc.calculate(values)
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(values)
             
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_negative_values(self):
             """Test with negative values."""
@@ -140,9 +143,9 @@ class TestPercentileCalculator:
             p25, p50, p75 = self.calc.calculate(values)
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(values)
             
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_duplicate_values(self):
             """Test with duplicate values."""
@@ -150,9 +153,9 @@ class TestPercentileCalculator:
             p25, p50, p75 = self.calc.calculate(values)
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(values)
             
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_all_same_values(self):
             """Test with all identical values."""
@@ -186,9 +189,9 @@ class TestPercentileCalculator:
             clean_values = [x for x in values if x is not None]
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(clean_values)
             
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_all_none_values(self):
             """Test that all None values raises ValueError."""
@@ -206,9 +209,9 @@ class TestPercentileCalculator:
             clean_values = [x for x in values if not (isinstance(x, float) and math.isnan(x))]
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(clean_values)
             
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_all_nan_values(self):
             """Test that all NaN values raises ValueError."""
@@ -228,9 +231,9 @@ class TestPercentileCalculator:
             clean_values = [x for x in values if x is not None and not (isinstance(x, float) and math.isnan(x))]
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(clean_values)
             
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_infinity_values(self):
             """Test with infinity values."""
@@ -238,9 +241,9 @@ class TestPercentileCalculator:
             p25, p50, p75 = self.calc.calculate(values)
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(values)
             
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_invalid_type_string(self):
             """Test that string values raise TypeError."""
@@ -277,9 +280,9 @@ class TestPercentileCalculator:
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(values)
             
             # Verify against reference with very high precision
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_quartile_positions(self):
             """Test that quartile positions are correctly calculated."""
@@ -287,9 +290,9 @@ class TestPercentileCalculator:
             p25, p50, p75 = self.calc.calculate(values)
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(values)
             
-            assert_that(p25, close_to(expected_p25, 0.0001))
-            assert_that(p50, close_to(expected_p50, 0.0001))
-            assert_that(p75, close_to(expected_p75, 0.0001))
+            assert_that(p25, close_to(expected_p25, TOLERANCE))
+            assert_that(p50, close_to(expected_p50, TOLERANCE))
+            assert_that(p75, close_to(expected_p75, TOLERANCE))
         
         def test_extreme_values(self):
             """Test with extreme value ranges."""
@@ -298,9 +301,9 @@ class TestPercentileCalculator:
             expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(values)
             
             # Use relative tolerance for extreme values
-            assert_that(p25, close_to(expected_p25, abs(expected_p25 * 0.0001)))
-            assert_that(p50, close_to(expected_p50, abs(expected_p50 * 0.0001)))
-            assert_that(p75, close_to(expected_p75, abs(expected_p75 * 0.0001)))
+            assert_that(p25, close_to(expected_p25, abs(expected_p25 * TOLERANCE)))
+            assert_that(p50, close_to(expected_p50, abs(expected_p50 * TOLERANCE)))
+            assert_that(p75, close_to(expected_p75, abs(expected_p75 * TOLERANCE)))
     
     class TestPerformance:
         """Test performance characteristics."""
@@ -348,7 +351,7 @@ class TestPercentileCalculator:
                 
                 # Use relative tolerance for large values
                 max_val = max(abs(expected_p25), abs(expected_p50), abs(expected_p75), 1.0)
-                tolerance = max(0.0001, max_val * 1e-9)
+                tolerance = max(TOLERANCE, max_val * 1e-9)
                 
                 assert_that(p25, close_to(expected_p25, tolerance),
                            f"Test {i}: p25 mismatch for size {size}")
@@ -399,7 +402,7 @@ class TestPercentileCalculator:
                 expected_p25, expected_p50, expected_p75 = reference_percentile_calculator(values)
                 
                 max_val = max(abs(expected_p25), abs(expected_p50), abs(expected_p75), 1.0)
-                tolerance = max(0.0001, max_val * 1e-9)
+                tolerance = max(TOLERANCE, max_val * 1e-9)
                 
                 assert_that(p25, close_to(expected_p25, tolerance),
                            f"p25 mismatch for {description}")

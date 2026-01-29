@@ -4,6 +4,18 @@ This document defines the four specialized agents for the percentile calculator 
 
 **Configuration**: See [AGENT_MODELS.md](./AGENT_MODELS.md) for model assignments and `.agent-models.json` for machine-readable configuration.
 
+## Workflow Requirements
+
+**CRITICAL**: Before creating any pull request, the following workflow MUST be completed:
+
+1. **Implementation Agent** completes the code changes
+2. **Primary Critique Agent (Claude)** reviews the implementation
+3. **Secondary Critique Agent (GPT-5)** provides independent review
+4. **Testing Agent** ensures comprehensive test coverage
+5. **Final verification**: All agents confirm VS Code Problems panel is clear
+
+**Only after all review agents have completed their analysis and approved the changes** should a pull request be created. This ensures code quality, correctness, and adherence to project standards before submission.
+
 ## Agent 1: Implementation Agent
 
 **Model**: `claude-sonnet-4.5` (see AGENT_MODELS.md)
@@ -60,6 +72,7 @@ This document defines the four specialized agents for the percentile calculator 
 - [ ] No security vulnerabilities
 - [ ] Error messages are informative
 - [ ] Naming conventions followed (values, descriptive mappings)
+- [ ] **VS Code Problems panel is clear** (no import errors, type errors, or linting issues)
 
 ## Agent 2b: Secondary Critique Agent (GPT-5)
 
@@ -82,6 +95,7 @@ This document defines the four specialized agents for the percentile calculator 
 - Real-world usability and developer experience
 - Code maintainability over time
 - Edge cases from a different angle
+- **Verify VS Code Problems panel is clear** (use `get_errors()` tool)
 
 **When to Use**:
 - After primary critic review
@@ -167,3 +181,4 @@ class TestImplementation:
 - [ ] Reference implementation validates correctness
 - [ ] Performance benchmarks meet requirements
 - [ ] No hardcoded expected values (use reference instead)
+- [ ] **VS Code Problems panel is clear** (no errors in test files)
