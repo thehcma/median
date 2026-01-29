@@ -57,10 +57,6 @@ def reference_percentile_calculator(values: list[float]) -> tuple[float, float, 
 class TestPercentileCalculator:
     """Test suite for PercentileCalculator."""
     
-    def setup_method(self):
-        """Set up test fixtures."""
-        self.calc = PercentileCalculator()
-    
     class TestNormalCases:
         """Test standard percentile calculations."""
         
