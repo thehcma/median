@@ -72,6 +72,7 @@ This document defines the four specialized agents for the percentile calculator 
 - [ ] No security vulnerabilities
 - [ ] Error messages are informative
 - [ ] Naming conventions followed (values, descriptive mappings)
+- [ ] No dead code (unused methods, variables, imports, or parameters)
 - [ ] **VS Code Problems panel is clear** (no import errors, type errors, or linting issues)
 
 ## Agent 2b: Secondary Critique Agent (GPT-5)
@@ -95,6 +96,7 @@ This document defines the four specialized agents for the percentile calculator 
 - Real-world usability and developer experience
 - Code maintainability over time
 - Edge cases from a different angle
+- Look for dead code (unused methods, setup fixtures that never run, unreachable code)
 - **Verify VS Code Problems panel is clear** (use `get_errors()` tool)
 
 **When to Use**:
