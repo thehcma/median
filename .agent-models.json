@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "description": "Agent model configuration for deterministic execution",
+  "agents": {
+    "implementation": {
+      "name": "Implementation Agent",
+      "model": "claude-sonnet-4.5",
+      "provider": "anthropic",
+      "rationale": "Strong at code generation, modern Python features, type hints"
+    },
+    "critic_primary": {
+      "name": "Primary Critique Agent (Claude)",
+      "model": "claude-sonnet-4.5",
+      "provider": "anthropic",
+      "rationale": "Excellent at finding logical errors, enforcing conventions"
+    },
+    "critic_secondary": {
+      "name": "Secondary Critique Agent (GPT-5)",
+      "model": "gpt-5.1-codex-max",
+      "provider": "openai",
+      "rationale": "Alternative perspective, strong at practical engineering concerns"
+    },
+    "testing": {
+      "name": "Testing Agent",
+      "model": "claude-sonnet-4.5",
+      "provider": "anthropic",
+      "rationale": "Thorough test coverage, good at edge case discovery, strong at property-based testing patterns",
+      "mandatory_practices": [
+        "Create reference brute-force implementation as oracle",
+        "Implement randomized/fuzz testing with 100+ cases",
+        "Use fixed random seed for reproducibility",
+        "Validate against reference, not hardcoded values",
+        "Test diverse input sizes and characteristics"
+      ]
+    }
+  },
+  "metadata": {
+    "created": "2026-01-29",
+    "last_updated": "2026-01-29",
+    "project": "median-percentile-calculator"
+  }
+}
