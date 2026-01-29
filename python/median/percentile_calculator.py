@@ -63,7 +63,9 @@ class PercentileCalculator:
             TypeError: If values contain non-numeric types (excluding None).
         """
         if not isinstance(values, Sequence):
-            raise TypeError(f"Expected a sequence, got {type(values).__name__}")
+            raise TypeError(
+                f"Expected a sequence (list, tuple, etc.), got {type(values).__name__}"
+            )
         
         clean_values = []
         for value in values:
@@ -72,7 +74,7 @@ class PercentileCalculator:
             
             if not isinstance(value, (int, float)):
                 raise TypeError(
-                    f"All values must be numeric, got {type(value).__name__}"
+                    f"All values must be numeric (int or float), got {type(value).__name__}: {value!r}"
                 )
             
             # Filter out NaN values

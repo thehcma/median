@@ -245,21 +245,21 @@ class TestPercentileCalculator:
             """Test that string values raise TypeError."""
             assert_that(
                 calling(self.calc.calculate).with_args([1, 2, "three", 4]),
-                raises(TypeError, "must be numeric")
+                raises(TypeError, "got str")
             )
         
         def test_invalid_type_dict(self):
             """Test that dict values raise TypeError."""
             assert_that(
                 calling(self.calc.calculate).with_args([1, 2, {}, 4]),
-                raises(TypeError, "must be numeric")
+                raises(TypeError, "got dict")
             )
         
         def test_non_sequence_input(self):
             """Test that non-sequence input raises TypeError."""
             assert_that(
                 calling(self.calc.calculate).with_args(42),
-                raises(TypeError, "Expected a sequence")
+                raises(TypeError, "got int")
             )
     
     class TestAccuracy:
