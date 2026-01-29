@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Optimal percentile calculator using heap-based algorithm"
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
-packages = [{include = "median", from = "python"}]
+packages = [{include = "median"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"

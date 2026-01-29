@@ -90,6 +90,7 @@ When creating or updating a pull request:
 - [ ] No dead code (unused methods, variables, imports, or parameters)
 - [ ] **VS Code Problems panel is clear** (no import errors, type errors, or linting issues)
 - [ ] **Tests run without warnings** (pytest should produce no warnings)
+- [ ] **CI/CD pipeline passes** (GitHub Actions workflow runs successfully)
 
 ## Agent 2b: Secondary Critique Agent (GPT-5)
 
@@ -116,6 +117,7 @@ When creating or updating a pull request:
 - Error message quality: ensure exceptions provide context with expected vs actual values
 - **Verify VS Code Problems panel is clear** (use `get_errors()` tool)
 - **Verify tests run without warnings** (check pytest output for PytestWarnings)
+- **Verify CI/CD pipeline passes** (check GitHub Actions status)
 
 **When to Use**:
 - After primary critic review
@@ -203,3 +205,4 @@ class TestImplementation:
 - [ ] No hardcoded expected values (use reference instead)
 - [ ] **VS Code Problems panel is clear** (no errors in test files)
 - [ ] **Tests run without warnings** (no PytestWarnings or configuration issues)
+- [ ] **CI/CD pipeline passes** (GitHub Actions tests run successfully)
